@@ -23,9 +23,9 @@ if ($result->num_rows > 0) {
     <div class="scrolling-wrapper-container">
         <div class="scrolling-wrapper right-to-left">
             <?php
-            // Duplicamos el array para un scroll infinito
-            $canciones_duplicadas = array_merge($canciones, $canciones);
-            foreach ($canciones_duplicadas as $cancion) {
+            // Triplicamos el array para un scroll infinito y fluido
+            $canciones_repetidas = array_merge($canciones, $canciones, $canciones);
+            foreach ($canciones_repetidas as $cancion) {
                 echo '<div class="song-item">';
                 echo '  <a href="' . BASE_URL . 'play.php?id=' . $cancion['id'] . '">';
                 echo '    <img src="' . htmlspecialchars($cancion['portada_url']) . '" alt="' . htmlspecialchars($cancion['titulo']) . '">';
@@ -42,8 +42,8 @@ if ($result->num_rows > 0) {
     <div class="scrolling-wrapper-container">
         <div class="scrolling-wrapper left-to-right">
             <?php
-            // Usamos el mismo array duplicado
-             foreach ($canciones_duplicadas as $cancion) {
+            // Usamos el mismo array triplicado
+             foreach ($canciones_repetidas as $cancion) {
                 echo '<div class="song-item">';
                 echo '  <a href="' . BASE_URL . 'play.php?id=' . $cancion['id'] . '">';
                 echo '    <img src="' . htmlspecialchars($cancion['portada_url']) . '" alt="' . htmlspecialchars($cancion['titulo']) . '">';

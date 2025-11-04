@@ -19,6 +19,7 @@ define('BASE_URL', $base_path);
         <a href="<?php echo BASE_URL; ?>index.php" class="logo">MusicHub</a>
         <nav>
             <a href="<?php echo BASE_URL; ?>index.php">Inicio</a>
+            <a href="<?php echo BASE_URL; ?>songs.php">Canciones</a>
             <a href="<?php echo BASE_URL; ?>albums.php">Álbumes</a>
             <?php if (isset($_SESSION['user_id'])): ?>
                 <a href="<?php echo BASE_URL; ?>logout.php">Cerrar Sesión</a>

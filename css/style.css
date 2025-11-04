@@ -67,23 +67,24 @@ header nav a {
 
 /* --- Página de Inicio: Carruseles --- */
 .home-container h2 {
-    font-size: 2em;
-    border-bottom: 2px solid var(--color-primary);
-    padding-bottom: 10px;
-    margin-bottom: 30px;
+    font-size: 2.5em; /* Título más grande */
+    border-bottom: 3px solid var(--color-primary);
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px var(--color-primary);
 }
 
 .scrolling-wrapper-container {
     overflow: hidden;
-    padding: 20px 0;
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    padding: 30px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .scrolling-wrapper {
     display: flex;
     width: max-content;
-    animation: scroll-rtl 40s linear infinite;
+    animation: scroll-rtl 60s linear infinite; /* Animación más lenta */
 }
 
 .scrolling-wrapper.left-to-right {
@@ -92,31 +93,33 @@ header nav a {
 
 .song-item {
     background-color: transparent;
-    margin: 0 15px;
+    margin: 0 20px; /* Más espacio entre items */
     text-align: center;
-    width: 180px;
+    width: 220px; /* Items más anchos */
 }
 
 .song-item a {
     display: block;
-    padding: 10px;
-    border-radius: 8px;
-    transition: background-color 0.3s;
+    padding: 15px;
+    border-radius: 12px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .song-item a:hover {
     background-color: var(--color-card-hover);
+    transform: translateY(-5px); /* Efecto de levantar al pasar el ratón */
 }
 
 .song-item img {
-    width: 160px;
-    height: 160px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    width: 200px; /* Imagen más grande */
+    height: 200px; /* Imagen más grande */
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
     margin-bottom: 15px;
 }
 
 .song-item .song-title {
+    font-size: 1.1em; /* Título de canción más grande */
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
@@ -126,18 +129,18 @@ header nav a {
 }
 
 .song-item .artist-name {
-    font-size: 0.9em;
+    font-size: 1em; /* Nombre de artista más grande */
     color: var(--color-text-secondary);
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 @keyframes scroll-rtl {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    to { transform: translateX(-33.333%); } /* Ajustado para un bucle de 3 repeticiones */
 }
 
 @keyframes scroll-ltr {
-    from { transform: translateX(-50%); }
+    from { transform: translateX(-33.333%); } /* Ajustado para un bucle de 3 repeticiones */
     to { transform: translateX(0); }
 }
 
