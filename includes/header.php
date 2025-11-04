@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once 'db.php';
+
+// Define a base URL for assets
+define('BASE_URL', '/'); // Adjust if your project is in a subfolder, e.g., /my-music-app/
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -8,18 +11,19 @@ require_once 'db.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma de Música</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/style.css">
 </head>
 <body>
     <header>
+        <a href="<?php echo BASE_URL; ?>index.php" class="logo">MusicHub</a>
         <nav>
-            <a href="index.php">Inicio</a>
-            <a href="albums.php">Álbumes</a>
+            <a href="<?php echo BASE_URL; ?>index.php">Inicio</a>
+            <a href="<?php echo BASE_URL; ?>albums.php">Álbumes</a>
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="logout.php">Cerrar Sesión</a>
+                <a href="<?php echo BASE_URL; ?>logout.php">Cerrar Sesión</a>
             <?php else: ?>
-                <a href="login.php">Iniciar Sesión</a>
-                <a href="register.php">Registrarse</a>
+                <a href="<?php echo BASE_URL; ?>login.php">Iniciar Sesión</a>
+                <a href="<?php echo BASE_URL; ?>register.php">Registrarse</a>
             <?php endif; ?>
         </nav>
     </header>
