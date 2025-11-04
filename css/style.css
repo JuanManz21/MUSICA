@@ -1,0 +1,195 @@
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal para centrar contenido */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos del Header (si tienes uno) */
+header {
+    background-color: #282828;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+/* Estilos de la Animación de Portadas en el Inicio */
+.scrolling-wrapper-container {
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.scrolling-wrapper {
+    display: flex;
+    animation-duration: 40s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.scrolling-wrapper.right-to-left {
+    animation-name: scroll-rtl;
+}
+
+.scrolling-wrapper.left-to-right {
+    animation-name: scroll-ltr;
+}
+
+.song-item {
+    flex: 0 0 150px; /* Ancho fijo para cada imagen */
+    margin: 0 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.song-item:hover {
+    transform: scale(1.05);
+}
+
+.song-item img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.song-item p {
+    margin-top: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-item .artist-name {
+    font-size: 12px;
+    color: #b3b3b3;
+}
+
+/* Definición de las animaciones de scroll */
+@keyframes scroll-rtl {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes scroll-ltr {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Página de Álbumes */
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.album-card {
+    background-color: #181818;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.album-card:hover {
+    background-color: #282828;
+}
+
+.album-card img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+/* Página de Reproducción */
+.player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+.player-container img {
+    width: 300px;
+    height: 300px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.player-container audio {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Formularios de Login y Registro */
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #282828;
+    border-radius: 8px;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #535353;
+    background-color: #3e3e3e;
+    color: #fff;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: #1db954;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-group button:hover {
+    background-color: #1ed760;
+}
+
+.form-container p {
+    text-align: center;
+}
+.form-container p a {
+    color: #1db954;
+    text-decoration: none;
+}
