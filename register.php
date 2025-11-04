@@ -1,6 +1,8 @@
 <?php
 require_once 'includes/header.php';
 
+$message = ''; // Variable para mensajes de éxito o error
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre_usuario = $_POST['nombre_usuario'];
     $email = $_POST['email'];
@@ -13,31 +15,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssss", $nombre_usuario, $email, $contrasena, $tipo_usuario);
 
     if ($stmt->execute()) {
-        echo "<p>Registro exitoso. Ahora puedes <a href='login.php'>iniciar sesión</a>.</p>";
-        // Si es un artista, podríamos redirigir a una página para crear el perfil de artista
+        $message = "Registro exitoso. Ahora puedes <a href='" . BASE_URL . "login.php'>iniciar sesión</a>.";
+        // Si es un artista, creamos su perfil de artista
         if ($tipo_usuario === 'artista') {
-            // Obtener el ID del usuario recién creado
             $id_usuario = $stmt->insert_id;
-            // Insertar en la tabla de artistas
-            $nombre_artista_default = "Nuevo Artista"; // O podrías pedirlo en el formulario
             $sql_artista = "INSERT INTO artistas (id_usuario, nombre_artista) VALUES (?, ?)";
             $stmt_artista = $conn->prepare($sql_artista);
-            $stmt_artista->bind_param("is", $id_usuario, $nombre_usuario); // Usamos el nombre de usuario como nombre de artista por defecto
+            $stmt_artista->bind_param("is", $id_usuario, $nombre_usuario);
             $stmt_artista->execute();
             $stmt_artista->close();
         }
     } else {
-        echo "<p>Error en el registro: " . $conn->error . "</p>";
+        // Manejar error de email/usuario duplicado
+        if ($conn->errno == 1062) {
+             $message = "Error: El nombre de usuario o el correo electrónico ya existen.";
+        } else {
+             $message = "Error en el registro: " . $conn->error;
+        }
     }
 
     $stmt->close();
-    $conn->close();
 }
 ?>
 
 <div class="form-container">
     <h2>Crear una Cuenta</h2>
-    <form action="register.php" method="post">
+
+    <?php if (!empty($message)): ?>
+        <p class="message"><?php echo $message; ?></p>
+    <?php endif; ?>
+
+    <form action="<?php echo BASE_URL; ?>register.php" method="post">
         <div class="form-group">
             <label for="nombre_usuario">Nombre de Usuario</label>
             <input type="text" id="nombre_usuario" name="nombre_usuario" required>
@@ -61,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Registrarse</button>
         </div>
     </form>
-    <p>¿Ya tienes una cuenta? <a href="login.php">Inicia sesión aquí</a>.</p>
+    <p>¿Ya tienes una cuenta? <a href="<?php echo BASE_URL; ?>login.php">Inicia sesión aquí</a>.</p>
 </div>
 
 <?php require_once 'includes/footer.php'; ?>

@@ -53,7 +53,7 @@ $result_canciones = $stmt_canciones->get_result();
             if ($result_canciones->num_rows > 0) {
                 while($cancion = $result_canciones->fetch_assoc()) {
                     echo '<li>';
-                    echo '  <a href="play.php?id=' . $cancion['id'] . '">';
+                    echo '  <a href="' . BASE_URL . 'play.php?id=' . $cancion['id'] . '">';
                     echo '    <span>' . htmlspecialchars($cancion['titulo']) . '</span>';
                     // Si tienes la duración, la puedes mostrar aquí
                     // echo '    <span class="duration">' . htmlspecialchars($cancion['duracion']) . '</span>';

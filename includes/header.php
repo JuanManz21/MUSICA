@@ -2,8 +2,9 @@
 session_start();
 require_once 'db.php';
 
-// Define a base URL for assets
-define('BASE_URL', '/'); // Adjust if your project is in a subfolder, e.g., /my-music-app/
+// Lógica para determinar la URL base dinámicamente
+$base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
+define('BASE_URL', $base_path);
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -17,7 +17,7 @@ $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while($album = $result->fetch_assoc()) {
                 echo '<div class="album-card">';
-                echo '  <a href="album_songs.php?id=' . $album['id'] . '">';
+                echo '  <a href="' . BASE_URL . 'album_songs.php?id=' . $album['id'] . '">';
                 echo '    <img src="' . htmlspecialchars($album['portada_url']) . '" alt="Portada de ' . htmlspecialchars($album['titulo']) . '">';
                 echo '    <h3>' . htmlspecialchars($album['titulo']) . '</h3>';
                 echo '    <p>' . htmlspecialchars($album['nombre_artista']) . '</p>';

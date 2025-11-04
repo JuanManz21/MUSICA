@@ -3,7 +3,7 @@ require_once 'includes/header.php';
 
 // Redirigir si el usuario ya está logueado
 if (isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: " . BASE_URL . "index.php");
     exit();
 }
 
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['tipo_usuario'] = $user['tipo_usuario'];
 
             // Redirigir a la página de inicio
-            header("Location: index.php");
+            header("Location: " . BASE_URL . "index.php");
             exit();
         } else {
             $error = "La contraseña es incorrecta.";
@@ -36,16 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "No se encontró ningún usuario con ese correo electrónico.";
     }
     $stmt->close();
-    $conn->close();
 }
 ?>
 
 <div class="form-container">
     <h2>Iniciar Sesión</h2>
     <?php if (isset($error)): ?>
-        <p style="color: red;"><?php echo $error; ?></p>
+        <p style="color: #F44336; text-align: center;"><?php echo $error; ?></p>
     <?php endif; ?>
-    <form action="login.php" method="post">
+    <form action="<?php echo BASE_URL; ?>login.php" method="post">
         <div class="form-group">
             <label for="email">Correo Electrónico</label>
             <input type="email" id="email" name="email" required>
@@ -58,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Iniciar Sesión</button>
         </div>
     </form>
-    <p>¿No tienes una cuenta? <a href="register.php">Regístrate aquí</a>.</p>
+    <p>¿No tienes una cuenta? <a href="<?php echo BASE_URL; ?>register.php">Regístrate aquí</a>.</p>
 </div>
 
 <?php require_once 'includes/footer.php'; ?>

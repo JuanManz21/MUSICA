@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
             $canciones_duplicadas = array_merge($canciones, $canciones);
             foreach ($canciones_duplicadas as $cancion) {
                 echo '<div class="song-item">';
-                echo '  <a href="play.php?id=' . $cancion['id'] . '">';
+                echo '  <a href="' . BASE_URL . 'play.php?id=' . $cancion['id'] . '">';
                 echo '    <img src="' . htmlspecialchars($cancion['portada_url']) . '" alt="' . htmlspecialchars($cancion['titulo']) . '">';
                 echo '    <p class="song-title">' . htmlspecialchars($cancion['titulo']) . '</p>';
                 echo '    <p class="artist-name">' . htmlspecialchars($cancion['nombre_artista']) . '</p>';
@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
             // Usamos el mismo array duplicado
              foreach ($canciones_duplicadas as $cancion) {
                 echo '<div class="song-item">';
-                echo '  <a href="play.php?id=' . $cancion['id'] . '">';
+                echo '  <a href="' . BASE_URL . 'play.php?id=' . $cancion['id'] . '">';
                 echo '    <img src="' . htmlspecialchars($cancion['portada_url']) . '" alt="' . htmlspecialchars($cancion['titulo']) . '">';
                 echo '    <p class="song-title">' . htmlspecialchars($cancion['titulo']) . '</p>';
                 echo '    <p class="artist-name">' . htmlspecialchars($cancion['nombre_artista']) . '</p>';
